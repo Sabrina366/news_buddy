@@ -7,54 +7,52 @@
             <textarea v-model="message" placeholder="search for content..."></textarea>
             <button>Search</button>
         </form>
-        <div class="articles">
-            <article>
-                <h2>Title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!
-                </p>
-            </article>
-            <article>
-                <h2>Title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!
-                </p>
-            </article>
-            <article>
-                <h2>Title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!
-                </p>
-            </article>
-            <article>
-                <h2>Title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!
-                </p>
-            </article>
-            <article>
-                <h2>Title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!
-                </p>
-            </article>
-            <article>
-                <h2>Title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!
-                </p>
-            </article>
+        <div class="articles" >
+            <div v-for="article in articles">
+                <a href="#">
+                    <article>
+                        <h2>{{article.title}}</h2>
+                        <p>{{article.summary}}</p>
+                    </article>
+                </a>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    data() {
+        return{
+            articles: [
+                {
+                    title: "Lorem",
+                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
+                },
+                {
+                    title: "Lorem",
+                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
+                },
+                {
+                    title: "Lorem",
+                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
+                },
+                {
+                    title: "Lorem",
+                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
+                },
+                {
+                    title: "Lorem",
+                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
+                }
+            ]
+        }
+    }
 }
 </script>
 
 <style scoped>
+
 .homepage {
     display: flex;
     flex-direction: column;
@@ -94,10 +92,15 @@ button {
     font-weight: 600;
 }
 
-.articles{
+.articles {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.articles a {
+    text-decoration: none;
+    color: inherit;
 }
 
 article {
