@@ -1,9 +1,9 @@
 <template>
     <div class="homepage">
         <a href="/">
-            <img alt="Vue logo" src="../assets/temp-frontpage-hero.png" />
+            <img alt="Vue logo" src="../assets/Taking_notes-rafiki.png" />
         </a>
-        <form action="">
+        <form @submit.prevent="sendText">
             <textarea v-model="message" placeholder="search for content..."></textarea>
             <button>Search</button>
         </form>
@@ -47,6 +47,16 @@ export default {
                 }
             ]
         }
+    },
+    methods:{
+        sendText(){
+            let text = {
+                message: this.message
+            }
+
+            this.$store.commit('appendText', text)
+            this.$router.push('/')
+        }
     }
 }
 </script>
@@ -60,7 +70,10 @@ export default {
 }
 
 img {
-    padding: 40px;
+    width: 60%;
+    height: 60vh;
+    object-fit: cover;
+    object-position: center top;
 }
 
 form {
