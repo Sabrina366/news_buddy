@@ -1,28 +1,25 @@
 <template>
-  <div>
-      <article v-for="article in articles" :key="article.id">
+  <div >
+    <article class="article">
         <h3>{{ article.title }}</h3>
         <p>{{ article.text }}</p>
         <p>{{ article.author }}</p>
         <p>{{ article.publicationDate }}</p>
-        <button>Delete</button>
+        <button>X</button>
     </article>
-
   </div>
-  
 </template>
 
 <script>
 export default {
-    computed:{
-    articles(){
-        return this.$store.state.articles
-    }
-  },
-
+    props: ['article'],
 }
 </script>
-
-<style>
+  
+<style scoped>
+ .article{
+  padding: 10px;
+  margin: 15px;
+ } 
 
 </style>
