@@ -4,7 +4,7 @@
             <img alt="Vue logo" src="../assets/Taking_notes-rafiki.png" />
         </a>
         <form @submit.prevent="sendText">
-            <textarea v-model="message" placeholder="search for content..."></textarea>
+            <textarea v-model="searchText" placeholder="search for content..."></textarea>
             <button>Search</button>
         </form>
         <div class="articles" >
@@ -22,40 +22,19 @@
 
 <script>
 export default {
-    data() {
-        return{
-            articles: [
-                {
-                    title: "Lorem",
-                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
-                },
-                {
-                    title: "Lorem",
-                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
-                },
-                {
-                    title: "Lorem",
-                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
-                },
-                {
-                    title: "Lorem",
-                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
-                },
-                {
-                    title: "Lorem",
-                    summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iure quis cum soluta corrupti sit vel, possimus facere sequi provident nesciunt, porro rem ex in dolorum rerum exercitationem omnis laboriosam!"
-                }
-            ]
-        }
-    },
     methods:{
         sendText(){
-            let text = {
-                message: this.message
+            let search = {
+                searchText: this.searchText
             }
 
-            this.$store.commit('appendText', text)
+            this.$store.dispatch('sendSearch', search)
             this.$router.push('/')
+        }
+    },
+    computed: {
+        articles(){
+            return this.$store.state.articles
         }
     }
 }
