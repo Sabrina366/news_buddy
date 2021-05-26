@@ -17,14 +17,19 @@ export default {
 
 <style scoped>
 .navbar{
+  position: fixed;
   font-size: 20px;
-  margin: 0px;
+  margin-bottom: 5px;
   justify-content: space-around;
   align-items: center;
   display: flex;
+  height: 0px;
 }
 .logo{
+  width: 30vw;
   float: left;
+  padding: 0px;
+  margin: 0px;
 }
 .icon {
   padding: 15px;
@@ -44,7 +49,7 @@ export default {
   color: #DDEFFD;
 }
 
-
+/* 
 @media (max-width: 1000px) {
   .navbar {
       font-size: 15px;
@@ -53,7 +58,7 @@ export default {
       flex-wrap: wrap;
       display: flex;
       justify-content: space-between;
-  }
+  } 
 }
-
+*/
 </style>
