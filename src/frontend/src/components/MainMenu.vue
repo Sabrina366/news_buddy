@@ -3,9 +3,12 @@
  <nav class="navbar">
     <div class="logo">
     <a href="/"><img class="icon" src="src/assets/NewsBuddy-logo.png" alt="Icon"></a>
+    <a href="/"><img class="icon-small" src="src/assets/NewsBuddy-IconSmall.png" alt="IconSmall"></a>
    </div>
+   <div class="tags">
     <a href="/">Create Content</a>
     <a href="/">Articles</a>
+   </div>
   </nav>
 
 </template>
@@ -20,45 +23,68 @@ export default {
   position: fixed;
   font-size: 20px;
   margin-bottom: 5px;
-  justify-content: space-around;
   align-items: center;
+  flex-direction: row;
   display: flex;
   height: 0px;
 }
+.icon-small{
+  display: none;
+  align-content: flex-start;
+}
+.tags{
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  min-width: 100px;
+  align-content: flex-end;
+}
+
 .logo{
-  width: 30vw;
+  width: 15%;
   float: left;
-  padding: 0px;
   margin: 0px;
+  flex-grow: 1;
 }
 .icon {
   padding: 15px;
   background-size: cover;
   width: 30%;
   margin-top: 15px;
+  display: flex;
 }
 
   
 .navbar a{
   color: #5474AA;
   text-decoration: none;
-  padding: 0px 5px;
+  padding: 15px;
 }
 
 .navbar a:hover{
   color: #DDEFFD;
 }
 
-/* 
+@media (max-width: 1300px) {
+  .icon{
+    display: none;
+  }
+  .icon-small{
+    display: flex;
+    margin: 0%;
+  }
+  .logo{
+  padding: 10px;
+}
+}
+
 @media (max-width: 1000px) {
   .navbar {
-      font-size: 15px;
-      flex-direction: row;
-      align-items: center;
-      flex-wrap: wrap;
-      display: flex;
-      justify-content: space-between;
-  } 
+    font-size: 15px;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
 }
-*/
+
 </style>
