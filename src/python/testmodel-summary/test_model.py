@@ -6,8 +6,6 @@ import gensim
 import operator
 import re
 
-from summarization import summarization
-
 df_articles = pd.read_csv('articles.test.csv')
 df_articles.head()
 
