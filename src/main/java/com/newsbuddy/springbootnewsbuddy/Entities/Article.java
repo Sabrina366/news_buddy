@@ -14,18 +14,18 @@ public class Article {
     private String title;
     private String author;
     private String pub_date;
-    private String URL;
+    private String url;
     private String text;
     private String timestamp;
 
     public Article() {
     }
 
-    public Article(String title, String author, String pub_date, String URL, String text, String timestamp) {
+    public Article(String title, String author, String pub_date, String url, String text, String timestamp) {
         this.title = title;
         this.author = author;
         this.pub_date = pub_date;
-        this.URL = URL;
+        this.url = url;
         this.text = text;
         this.timestamp = timestamp;
     }
@@ -62,12 +62,12 @@ public class Article {
         this.pub_date = pub_date;
     }
 
-    public String getURL() {
-        return URL;
+    public String getUrl() {
+        return url;
     }
 
-    public void setURL(String URL) {
-        this.URL = URL;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getText() {
@@ -93,7 +93,7 @@ public class Article {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", pub_date='" + pub_date + '\'' +
-                ", URL='" + URL + '\'' +
+                ", url='" + url + '\'' +
                 ", text='" + text + '\'' +
                 ", timestamp=" + timestamp +
                 '}';
