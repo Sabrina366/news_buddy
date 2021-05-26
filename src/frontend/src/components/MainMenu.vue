@@ -30,18 +30,18 @@ export default {
   padding: 15px;
   background-size: cover;
   width: 30%;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
   
 .navbar a{
-  color: gray;
+  color: #5474AA;
   text-decoration: none;
   padding: 0px 5px;
 }
 
 .navbar a:hover{
-  color: rgb(139, 164, 233);
+  color: #DDEFFD;
 }
 
 
