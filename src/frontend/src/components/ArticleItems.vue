@@ -5,7 +5,6 @@
         <h3>{{ article.title }}</h3>
         <p class="author">Author  {{ article.author }}</p>
         <p class="text">{{ article.text }}</p>
-        <p>{{ article.publicationDate }}</p>
     </article>
   </div>
 </template>
@@ -26,9 +25,11 @@ export default {
   padding: 10px;
   margin: 15px 50px;
   border-style: dotted;
-  border-radius: 8px;
+  border-radius: 5px;
   border-width: 1.5px;
   border-color:lightgray;   
+  max-height: 20vh;
+  overflow: hidden;
  } 
  button{
    float: right;
@@ -38,6 +39,13 @@ export default {
    background-color: transparent;
    color:darkred;
    font-weight: bold;
+ }
+ .author{
+   font-size: 10px;
+ }
+ .timestamp{
+   font-size: 10px;
+   
  }
 
 </style>

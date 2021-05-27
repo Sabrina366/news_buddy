@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article id="articlepage">
     <div class="input">
       <input 
     type="text" 
@@ -19,7 +19,8 @@ import ArticleItems from "../components/ArticleItems.vue";
 export default {
     data() {
       return{
-        input: ''
+        input: '',
+        articlesSorted: []
       }
     },
     components:{
@@ -27,9 +28,9 @@ export default {
   },
   computed:{
     articles(){
-        return this.$store.state.articles.filter(article =>
-        article.title.toLowerCase().includes(this.input.toLowerCase())
-      );
+        let articlesSorted = this.$store.state.articles.filter(article =>
+        article.title.toLowerCase().includes(this.input.toLowerCase())).reverse()
+        return articlesSorted
     }
   },
 
@@ -44,7 +45,7 @@ export default {
   input{
     border-color: rgb(64, 115, 209);
     border-width: 1.5px;
-    border-radius: 5px;
+    border-radius: 4px;
     margin: 20px 10px;
     
   }
@@ -52,7 +53,7 @@ export default {
     max-height: 65vh;
     overflow: auto;
   }
-  article{
+  .articlepage{
     max-height: 100vh;
     font-size: 12px;
   }
