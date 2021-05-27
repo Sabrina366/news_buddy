@@ -78,14 +78,4 @@ export default {
   }
 }
 
-/* @media (max-width: 1000px) {
-  .navbar {
-    font-size: 15px;
-    flex-direction: row;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-  }
-} */
-
 </style>
