@@ -10,13 +10,15 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String title;
     private String author;
     private String pub_date;
     private String url;
     private String text;
     private String timestamp;
+    private String summary;
+    private float score;
+
 
     public Article() {
     }
@@ -28,6 +30,34 @@ public class Article {
         this.url = url;
         this.text = text;
         this.timestamp = timestamp;
+    }
+
+    public Article(int id, String title, String author, String pub_date, String url, String text, String timestamp, String summary, float score) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.pub_date = pub_date;
+        this.url = url;
+        this.text = text;
+        this.timestamp = timestamp;
+        this.summary = summary;
+        this.score = score;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
     }
 
     public int getId() {
@@ -95,7 +125,10 @@ public class Article {
                 ", pub_date='" + pub_date + '\'' +
                 ", url='" + url + '\'' +
                 ", text='" + text + '\'' +
-                ", timestamp=" + timestamp +
+                ", timestamp='" + timestamp + '\'' +
+                ", summary='" + summary + '\'' +
+                ", score=" + score +
                 '}';
     }
+
 }
