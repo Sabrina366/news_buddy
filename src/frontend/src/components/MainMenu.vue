@@ -5,8 +5,10 @@
     <a href="/"><img class="icon" src="src/assets/NewsBuddy-logo.png" alt="Icon"></a>
     <a href="/"><img class="icon-small" src="src/assets/NewsBuddy-IconSmall.png" alt="IconSmall"></a>
    </div>
-   <div class="tags">
+   <div class="link1">
     <a href="/">Create Content</a>
+   </div>
+    <div class="link2">
     <a href="/">Articles</a>
    </div>
   </nav>
@@ -25,39 +27,42 @@ export default {
   margin-bottom: 5px;
   align-items: center;
   flex-direction: row;
+  justify-content: space-between;
   display: flex;
-  height: 0px;
+  min-width: 100%;
+  background: 255,255,255;
 }
 .icon-small{
   display: none;
-  align-content: flex-start;
 }
-.tags{
-  justify-content: flex-end;
-  flex-direction: row-reverse;
-  min-width: 100px;
-  align-content: flex-end;
+
+.icon{
+  display: flex;
+  max-width: 120px;
+  height: auto;
+}
+
+.link1{
+  order: 2;
+  flex-grow: 1;
+}
+
+.link2{
+  order: 3;
+  flex-grow: 1;
+  
 }
 
 .logo{
-  width: 15%;
   float: left;
   margin: 0px;
   flex-grow: 1;
+  order: 1;
 }
-.icon {
-  padding: 15px;
-  background-size: cover;
-  width: 30%;
-  margin-top: 15px;
-  display: flex;
-}
-
   
 .navbar a{
   color: #5474AA;
   text-decoration: none;
-  padding: 15px;
 }
 
 .navbar a:hover{
@@ -70,14 +75,10 @@ export default {
   }
   .icon-small{
     display: flex;
-    margin: 0%;
   }
-  .logo{
-  padding: 10px;
-}
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
   .navbar {
     font-size: 15px;
     flex-direction: row;
@@ -85,6 +86,6 @@ export default {
     display: flex;
     justify-content: space-between;
   }
-}
+} */
 
 </style>
