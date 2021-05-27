@@ -8,10 +8,10 @@ const routes = [
         component: Home,
     },
     {
-        path: '/article', // -> /article/:id
+        path: '/articles/:id/:title',
         name: 'Article',
         component: Article,
-    },
+    }
 ]
 const router = createRouter({
     history: createWebHistory(),

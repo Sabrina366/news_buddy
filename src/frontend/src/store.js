@@ -7,8 +7,18 @@ const store = createStore({
         },
         articles: [
             {
-                id: 1,
-                title: "Lorem",
+                id: 201,
+                title: "Lorem1",
+                text: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.\n\n Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. \n\n Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.",
+                author: "Test Testsson",
+                url: "www.somenewspaper.com",
+                published_date: "2019-01-01",
+                timestamp: "2020-05-25",
+                summary: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut"
+            },
+            {
+                id: 202,
+                title: "Lorem2",
                 text: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.",
                 author: "Test Testsson",
                 url: "www.somenewspaper.com",
@@ -17,18 +27,8 @@ const store = createStore({
                 summary: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut"
             },
             {
-                id: 2,
-                title: "Lorem",
-                text: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.",
-                author: "Test Testsson",
-                url: "www.somenewspaper.com",
-                published_date: "2019-01-01",
-                timestamp: "2020-05-25",
-                summary: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut"
-            },
-            {
-                id: 3,
-                title: "Lorem",
+                id: 203,
+                title: "Lorem3",
                 text: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.",
                 author: "Test Testsson",
                 url: "www.somenewspaper.com",

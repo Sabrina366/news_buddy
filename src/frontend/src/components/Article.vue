@@ -11,17 +11,13 @@
 
 <script>
 export default {
-    data() {
-        return{
-            article: {
-                id: 1,
-                title: "Lorem",
-                text: "Fusce vulputate eleifend sapien. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum ullamcorper mauris at ligula. Aenean ut eros et nisl sagittis vestibulum. Ut varius tincidunt libero. Fusce vulputate eleifend sapien. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum ullamcorper mauris at ligula. \n\n Aenean ut eros et nisl sagittis vestibulum. Ut varius tincidunt libero. Fusce vulputate eleifend sapien. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum ullamcorper mauris at ligula. Aenean ut eros et nisl sagittis vestibulum. Ut varius tincidunt libero. Fusce vulputate eleifend sapien. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum ullamcorper mauris at ligula. Aenean ut eros et nisl sagittis vestibulum. Ut varius tincidunt libero. Fusce vulputate eleifend sapien. \n\n Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum ullamcorper mauris at ligula. Aenean ut eros et nisl sagittis vestibulum. Ut varius tincidunt libero. Fusce vulputate eleifend sapien. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum ullamcorper mauris at ligula. Aenean ut eros et nisl sagittis vestibulum. Ut varius tincidunt libero.",
-                author: "Test Testsson",
-                url: "www.somenewspaper.com",
-                published_date: "2019-01-01",
-                timestamp: "2020-05-25",
-                summary: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut"
+
+    computed: {
+        article(){
+            for(let i=0; i<=this.$store.state.articles.length; i++) {
+                if(this.$store.state.articles[i].id == this.$route.params.id) {
+                    return this.$store.state.articles[i]
+                }
             }
         }
     }

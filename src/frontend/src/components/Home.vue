@@ -1,20 +1,18 @@
 <template>
     <div class="homepage">
-        <a href="/">
-            <img alt="Vue logo" src="../assets/Taking_notes-rafiki.png" />
-        </a>
+        <img alt="Vue logo" src="../assets/Taking_notes-rafiki.png" />
         <form @submit.prevent="sendText">
             <textarea v-model="searchText" placeholder="search for content..."></textarea>
             <button>Search</button>
         </form>
-        <div class="articles" >
+        <div class="articles">
             <div v-for="article in articles">
-                <a href="#">
+                <router-link :to="'/articles/' + article.id + '/' + article.title">
                     <article>
                         <h2>{{article.title}}</h2>
                         <p>{{article.summary}}</p>
                     </article>
-                </a>
+                </router-link>
             </div>
         </div>
     </div>
