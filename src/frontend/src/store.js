@@ -48,7 +48,8 @@ const store = createStore({
     },
     actions:{
         async getArticles({ commit }) {
-            let res = await fetch('/rest/articles')
+            let url = 'http://127.0.0.1:8080' // Change based backend
+            let res = await fetch(url + '/spring/api/articles')
             let data = await res.json()
             commit('setArticles', data)
         },
