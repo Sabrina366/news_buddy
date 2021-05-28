@@ -2,14 +2,14 @@
 
  <nav class="navbar">
     <div class="logo">
-    <a href="/"><img class="icon" src="src/assets/NewsBuddy-logo.png" alt="Icon"></a>
-    <a href="/"><img class="icon-small" src="src/assets/NewsBuddy-IconSmall.png" alt="IconSmall"></a>
-   </div>
+    <router-link to="/"><img class="icon" src="src/assets/NewsBuddy-logo.png" alt="Icon"></router-link>
+    <router-link to="/"><img class="icon-small" src="src/assets/NewsBuddy-IconSmall.png" alt="IconSmall"></router-link>
+  </div>
    <div class="link1">
-    <a href="/">Create Content</a>
+     <router-link to="/">Add Article</router-link>
    </div>
     <div class="link2">
-    <a href="/">Articles</a>
+      <router-link to="/articles">Articles</router-link>
    </div>
   </nav>
 
@@ -22,7 +22,6 @@ export default {
 
 <style scoped>
 .navbar{
-  position: fixed;
   font-size: 20px;
   margin-bottom: 5px;
   align-items: center;
@@ -34,12 +33,16 @@ export default {
 }
 .icon-small{
   display: none;
+  pointer-events: visible;
+  max-width: 120px;
+  height: auto;
 }
 
 .icon{
   display: flex;
-  max-width: 120px;
+  max-width: 100px;
   height: auto;
+  pointer-events: visible;
 }
 
 .link1{
@@ -56,8 +59,9 @@ export default {
 .logo{
   float: left;
   margin: 0px;
-  flex-grow: 1;
+  flex-grow: 3;
   order: 1;
+  pointer-events: none;
 }
   
 .navbar a{
