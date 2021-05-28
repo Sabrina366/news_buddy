@@ -24,10 +24,9 @@ Militants launched more than 300 rockets towards Israel during the day, the Isra
 
 
 def summarization(text):
-#for article in result:
+
 #! transform the text into an nlp doc
     doc = nlp(text)
-    #tokens = [token.text for token in doc]
 
 #! Calculate word frequencies after removing stopwords and punctuations   
     word_frequencies = {}
