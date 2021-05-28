@@ -1,6 +1,6 @@
 from databases import Database
 
-db = Database('sqlite:C:/Users/sabri/Desktop/news_buddy/news-buddy.db')
+db = Database('sqlite:../../news-buddy.db')
 
 async def get(query, values={}):
   rows = await db.fetch_all(query=query, values=values)
