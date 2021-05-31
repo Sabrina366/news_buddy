@@ -16,10 +16,8 @@ public class Article {
     private String url;
     private String text;
     private String timestamp;
-
     @Transient
-    private String summary;
-
+    String summary;
     @Transient
     private float score;
 

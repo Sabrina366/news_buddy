@@ -22,11 +22,8 @@
 export default {
     methods:{
         sendText(){
-            let search = {
-                searchText: this.searchText
-            }
-
-            this.$store.dispatch('sendSearch', search)
+            this.$store.commit('setSearch', this.searchText)
+            this.$store.dispatch('sendSearch', this.searchText)
             this.$router.push('/')
         }
     },

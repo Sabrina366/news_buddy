@@ -8,10 +8,13 @@
 <script>
 import MainMenu from "./components/MainMenu.vue";
 export default {
-  name: 'App',
-  components: {
-    MainMenu
-  }
+    name: 'App',
+    components: {
+        MainMenu
+    },
+    created() {
+        this.$store.dispatch('getArticles')
+    },
 }
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
