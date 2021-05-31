@@ -3,16 +3,16 @@
     <article class="article">
         <teleport to="#confirm">
           <div class="confirmDelete" v-if="showConfirm">
-            <p>
-              Delete Article?
+            <p class="confirmtxt">
+              Delete Article Permanently?
             </p>
-            <button @click="deleteArticle,showConfirm = false" >Delete</button>
-            <button @click="showConfirm = false">Cancel</button>
+            <button @click="delArticle" class="deletebtn">Delete</button>
+            <button @click="showConfirm = false" class="cancelbtn">Cancel</button>
           </div>
         </teleport>
-        <button @click="showConfirm = true">X</button>
+        <button @click="showConfirm = true" class="delbtn">X</button>
         <h3>{{ article.title }}</h3>
-        <p class="author">Author  {{ article.author }}</p>
+        <p class="author">By {{ article.author }}</p>
         <p class="text">{{ article.text }}</p>
     </article>
   </div>
@@ -28,8 +28,11 @@ export default {
   },
     props: ['article'],
     methods: {
-    deleteArticle(){
+    delArticle(){
+      console.log(this.article.id)
       this.$store.commit('removeArticle', this.article)
+      this.$store.dispatch('deleteArticle', this.article)
+      this.showConfirm = false
     }
   }
 }
@@ -46,7 +49,7 @@ export default {
   height: 20vh;
   overflow: hidden;
  } 
- button{
+ .delbtn{
    float: right;
    border-style: none;
    cursor: pointer;
@@ -54,6 +57,7 @@ export default {
    background-color: transparent;
    color:darkred;
    font-weight: bold;
+   box-shadow: grey;
  }
  .author{
    font-size: 10px;
@@ -72,6 +76,30 @@ export default {
   text-align: center;
   border-radius: 5px;
   border-style: solid;
+  border-width: 1px;
+  border-color: darkgray;
+  box-shadow: darkslategray;
 }
+.deletebtn{
+  background-color:darkred;
+  cursor: pointer;
+  color: ghostwhite;
+  padding: 2%;
+  border-width: 1px;
+  margin-top: 10%;
+  margin-right: 1.5%;
 
+}
+.cancelbtn{
+  cursor: pointer;
+  background-color: lightgray;
+  padding: 1%;
+  padding: 2%;
+  margin-top: 10%;
+  margin-left: 1.5%;
+  border-width: 1px;
+}
+.confirmtxt{
+  margin-top: 10%;
+}
 </style>
