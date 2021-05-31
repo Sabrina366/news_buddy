@@ -1,4 +1,5 @@
 from sanic import Sanic, response as res
+from nlp import sim_res_search
 
 app = Sanic(__name__)
 
@@ -30,6 +31,21 @@ async def get_articles(req):
   from database import get_articles
   return res.json(await get_articles())
 
+@app.get('/sanic/api/articles/result')
+async def post_proccesed(req):
+  from database import get_articles
+  
+  data_frame = await get_articles()
+  
+  for article in data_frame:
+    doc = article['text']
+    result = sim_res_search("hey i am a string" , doc)
+    
+  for article in data_frame:  
+    article['score'] = result
+    
+  return res.json(data_frame)  
+   
 
 
 @app.post('/sanic/api/articles')
@@ -47,6 +63,11 @@ async def delete_article_by_id(req, article_id):
     from database import delete_article
     await delete_article(article_id)
     return res.text('OK')
+
+
+
+
+
 
 if __name__ == "__main__":
   app.run(port=8000)
