@@ -23,7 +23,7 @@ Militants launched more than 300 rockets towards Israel during the day, the Isra
 """
 
 
-def summarization(text):
+def GetSummary(text):
 
 #! transform the text into an nlp doc
     doc = nlp(text)
@@ -70,4 +70,4 @@ def summarization(text):
     print((summary))
 
 #! run function
-summarization(text)
+GetSummary(text)
