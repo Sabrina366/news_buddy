@@ -1,5 +1,6 @@
 from sanic import Sanic, response as res
 
+
 app = Sanic(__name__)
 
 @app.get('/sanic/api/users')
