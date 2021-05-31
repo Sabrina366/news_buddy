@@ -1,6 +1,8 @@
 import spacy
 from spacy.matcher import PhraseMatcher
 from collections import Counter
+from spacy.lang.en.stop_words import STOP_WORDS
+from string import punctuation
 
 print()
 nlp = spacy.load("en_core_web_lg")
@@ -77,5 +79,56 @@ res = sim_res_search(search_input, doc)
 print(res)
 
 
+#! Here we will create a list of stopwords.
+stopwords = list(STOP_WORDS)
+punctuation = punctuation + '\n'
+punctuation
 
+def GetSummary(text):
 
+#! transform the text into an nlp doc
+    doc = nlp(text)
+
+#! Calculate word frequencies after removing stopwords and punctuations   
+    word_frequencies = {}
+    for word in doc:
+        if word.text.lower() not in stopwords:
+            if word.text.lower() not in punctuation:
+                if word.text not in word_frequencies.keys():
+                    word_frequencies[word.text] = 1
+                else:
+                    word_frequencies[word.text] += 1
+
+    max_frequency = max(word_frequencies.values())
+
+#! Calculate the maximum frequency and divide it by all frequencies to get normalized word frequencies
+    for word in word_frequencies.keys():
+        word_frequencies[word] = word_frequencies[word]/max_frequency
+
+    sentence_tokens = [sent for sent in doc.sents]
+
+#! Calculate the most important sentences by adding the word frequencies in each sentence
+    sentence_scores = {}
+    for sent in sentence_tokens:
+        for word in sent:
+            if word.text.lower() in word_frequencies.keys():
+                if sent not in sentence_scores.keys():
+                    sentence_scores[sent] = word_frequencies[word.text.lower()]
+                else:
+                    sentence_scores[sent] += word_frequencies[word.text.lower()]
+
+    from heapq import nlargest
+
+#! calculate % of the text with maximum score
+    select_length = int(len(sentence_tokens)*0.3)
+
+#! Get summary of text
+    summary = nlargest(select_length, sentence_scores, key = sentence_scores.get)
+
+    final_summary = [word.text for word in summary]
+    summary = ' '.join(final_summary)
+
+    print((summary))
+
+#! run function
+GetSummary(doc)
