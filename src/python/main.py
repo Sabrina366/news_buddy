@@ -1,4 +1,5 @@
 from sanic import Sanic, response as res
+from sanic_cors import CORS, cross_origin #pip install Sanic-Cors
 
 app = Sanic(__name__)
 
@@ -47,6 +48,16 @@ async def delete_article_by_id(req, article_id):
     from database import delete_article
     await delete_article(article_id)
     return res.text('OK')
+
+
+
+@app.route('/sanic/api/search', methods=['POST', 'OPTIONS'])
+@cross_origin(app)
+async def post_search(req):
+    search = req.json
+    print(search)
+    return res.json(search)
+
 
 if __name__ == "__main__":
   app.run(port=8000)

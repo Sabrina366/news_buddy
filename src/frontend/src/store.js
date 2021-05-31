@@ -2,6 +2,10 @@ import { createStore } from "vuex"
 
 const store = createStore({
     state:{
+        urls:{
+            springUrl: 'http://127.0.0.1:8080',
+            sanicUrl: 'http://127.0.0.1:8000'
+        },
         search: {
             searchText: "lorem ipsum lorem"
         },
@@ -47,20 +51,19 @@ const store = createStore({
         }
     },
     actions:{
-        async getArticles({ commit }) {
-            let url = 'http://127.0.0.1:8080' // Change based backend
-            let res = await fetch(url + '/spring/api/articles')
+        async getArticles({ commit, state }) {
+            let res = await fetch(state.urls.springUrl + '/spring/api/articles')
             let data = await res.json()
             commit('setArticles', data)
         },
-        async sendSearch({ dispatch, state }) {
-            let res = await fetch('/rest/search', {
+        async sendSearch({state}) {
+            let res = await fetch(state.urls.sanicUrl + '/sanic/api/search', {
                 method: 'post',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(state.search.searchText)
             })
             let data = await res.json()
-            dispatch('setSearch', state.search.searchText)
+            console.log("returned: " + data)
         }
     }
 })
