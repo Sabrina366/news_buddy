@@ -1,6 +1,7 @@
 from sanic import Sanic, response as res
 from sanic_cors import CORS, cross_origin #pip install Sanic-Cors
-from nlp import sim_res_search
+from nlp import sim_res_search, GetSummary
+
 
 app = Sanic(__name__)
 
@@ -32,20 +33,6 @@ async def get_articles(req):
   from database import get_articles
   return res.json(await get_articles())
 
-@app.get('/sanic/api/articles/result')
-async def post_proccesed(req):
-  from database import get_articles
-
-  data_frame = await get_articles()
-
-  for article in data_frame:
-    doc = article['text']
-    result = sim_res_search("hey i am a string" , doc)
-
-  for article in data_frame:
-    article['score'] = result
-
-  return res.json(data_frame)
 
 
 
@@ -70,10 +57,39 @@ async def delete_article_by_id(req, article_id):
 @app.route('/sanic/api/search', methods=['POST', 'OPTIONS'])
 @cross_origin(app)
 async def post_search(req):
+    from database import get_articles
     search = req.json
     print(search)
-    return res.json(search)
+  
+    data_frame = await get_articles()
+  
+    for article in data_frame:
+      doc = article['text']
+      score_result = sim_res_search(search, doc)
+      summary_result = GetSummary(doc)
+      #print(score_result)
+    for article in data_frame:
+      article['score'] = score_result
+      article['summary'] = summary_result
+      
+      
+    return res.json(data_frame)
 
+""" @app.get('/sanic/api/articles/result')
+async def post_proccesed(req):
+  from database import get_articles
+  
+  data_frame = await get_articles()
+  
+  for article in data_frame:
+    doc = article['text']
+    score_result = sim_res_search(, doc)
+    summary_result = GetSummary(doc)
+  for article in data_frame:
+    article['score'] = score_result
+    article['summary'] = summary_result
+  
+  return res.json(data_frame) """
 
 if __name__ == "__main__":
   app.run(port=8000)

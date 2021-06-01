@@ -63,7 +63,7 @@ const store = createStore({
                 body: JSON.stringify(state.search.searchText)
             })
             let data = await res.json()
-            console.log("returned: " + data)
+            console.log("returned: " + JSON.stringify(data))
         }
     }
 })
