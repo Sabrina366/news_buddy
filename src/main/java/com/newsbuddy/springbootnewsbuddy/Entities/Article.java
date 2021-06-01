@@ -1,6 +1,8 @@
 package com.newsbuddy.springbootnewsbuddy.Entities;
 
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Value("${article.id}")
     private int id;
     private String title;
     private String author;
