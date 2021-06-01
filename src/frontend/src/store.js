@@ -9,6 +9,41 @@ const store = createStore({
         search: {
             searchText: "lorem ipsum lorem"
         },
+        searchResult: [
+            {
+                id: 201,
+                title: "Result1",
+                text: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.\n\n Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. \n\n Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.",
+                author: "Test Testsson",
+                url: "www.somenewspaper.com",
+                published_date: "2019-01-01",
+                timestamp: "2020-05-25",
+                summary: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut",
+                score: 0.85
+            },
+            {
+                id: 202,
+                title: "Result2",
+                text: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.",
+                author: "Test Testsson",
+                url: "www.somenewspaper.com",
+                published_date: "2019-01-01",
+                timestamp: "2020-05-25",
+                summary: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut",
+                score: 0.95
+            },
+            {
+                id: 203,
+                title: "Result3",
+                text: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula. Vestibulum suscipit nulla quis orci. Fusce risus nisl, viverra et, tempor et, pretium in, sapien.",
+                author: "Test Testsson",
+                url: "www.somenewspaper.com",
+                published_date: "2019-01-01",
+                timestamp: "2020-05-25",
+                summary: "Mauris turpis nunc, blandit et, volutpat molestie, porta ut",
+                score: 0.75
+            }
+        ],
         articles: [
             {
                 id: 201,

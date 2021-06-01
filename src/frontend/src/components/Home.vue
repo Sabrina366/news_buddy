@@ -18,7 +18,9 @@
     </div>
 </template>
 
+
 <script>
+
 export default {
     methods:{
         sendText(){
@@ -29,7 +31,11 @@ export default {
     },
     computed: {
         articles(){
-            return this.$store.state.articles
+            var articlesSortedByScore = this.$store.state.searchResult.slice(0);
+            articlesSortedByScore.sort(function(a,b) {
+                return b.score - a.score;
+            });
+            return articlesSortedByScore
         }
     }
 }
