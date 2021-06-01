@@ -2,7 +2,7 @@ from sanic import Sanic, response as res
 from sanic_cors import CORS, cross_origin #pip install Sanic-Cors
 import sys
 sys.path.append('../')
-from python.nlp import sim_res_search, GetSummary
+from python.nlp import sim_res_search, GetSummary, readingTime
 
 
 
@@ -71,10 +71,13 @@ async def post_search(req):
       doc = article['text']
       score_result = sim_res_search(search, doc)
       summary_result = GetSummary(doc)
+      fullText = readingTime(doc)
+      sumText = readingTime(summary_result)
       #print(score_result)
       article['score'] = score_result
       article['summary'] = summary_result
-    
+      article['Full-RedingTime'] = fullText
+      article['Summery-RedingTime'] = sumText
       
       
     return res.json(data_frame)
