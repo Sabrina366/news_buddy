@@ -1,49 +1,58 @@
 <template>
     <div class="addArticle">
     <img alt="readingNews" src="../assets/News-bro.png"  >
-    <form @submit.prevent="handleSubmit">
+    <form  @submit.prevent="handlesubmit">
+        
         <div><input type="author" placeholder="Author" required v-model="author" id="author"> 
         </div>
         <div><input type="date" placeholder="Published date" required v-model="date" id="date">
         </div>
         <textarea type="article" placeholder="Article" required v-model="article"></textarea> 
-        <div><input type="url" placeholder="Link to article" required v-model="url" id="link">
+        <div><input type="url" placeholder="Link to article" v-model="url" id="link">
         </div>
         
         <div class="submit">
-            <button>Submit article</button>
+            <button type="submit" id="submitButton">Submit article</button>
+    
         </div>
+        
+
     </form>
+
+    
     </div>
 </template>
 
 <script>
+
+
 export default {
     data(){
         return{
-            author: '' ,
-            date: '',
-            article: '',
+            author: "" ,
+            date: "",
+            article: "",
+            url: "",
+        
         }
     },
     
-
     methods: {
+
     handlesubmit(){
-        
+    console.log("form submitted")
 
+    },
 
+    
     }
-    }
+
 }
-        
-
-
-
 
 </script>
 
 <style scoped>
+
 
 .addArticle {
     display: flex;
@@ -51,13 +60,14 @@ export default {
     align-items: center;
 }
 
-button{
+#submitButton{
     background: rgb(87, 87, 192);
     border: 0;
-    padding: 10px 20px;
+    padding: 9px 20px;
     margin-top: 20px;
     color: white;
     border-radius: 20px;
+
 
 }
 
@@ -85,7 +95,7 @@ textarea {
 input{
     border: 1.5px solid #5474AA;
     padding: 5px;
-    margin: 3px;
+    margin: 5px;
     border-radius: 4px;
     height: 17px;
     width: 96.5%;
@@ -94,11 +104,12 @@ input{
 
 
 img {
-    width: 45%;
-    height: 60vh;
+    width: 40%;
+    height: 65vh;
     object-fit: cover;
     object-position: center top;
 }
+
 
 
 </style>
