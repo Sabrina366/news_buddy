@@ -5,7 +5,8 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 
 print()
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("en_core_web_lg", disable=['ner', 'parser', 'textcat'])
+nlp.add_pipe('sentencizer')
 matcher = PhraseMatcher(nlp.vocab, attr= 'LOWER')
 
 ### raw search input getting parsed to spacy.Doc object
