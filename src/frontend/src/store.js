@@ -1,6 +1,7 @@
 import { createStore } from "vuex" 
 
 const store = createStore({
+
     state:{
         urls:{
             springUrl: 'http://127.0.0.1:8080',
@@ -83,7 +84,11 @@ const store = createStore({
         },
         setSearch(state, searchTextToAppend) {
             state.search.searchText = searchTextToAppend
-        }
+        },
+        removeArticle(state, articleToRemove){
+            state.articles = state.articles.filter(article => article != articleToRemove)
+          },
+       
     },
     actions:{
         async getArticles({ commit, state }) {
@@ -98,7 +103,19 @@ const store = createStore({
                 body: JSON.stringify(state.search.searchText)
             })
             let data = await res.json()
-            console.log("returned: " + data)
+            console.log("returned: " + JSON.stringify(data))
+        },
+        async deleteArticle({state}, article) {
+            let res = await fetch(state.urls.springUrl + '/spring/api/articles/'+ article.id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                
+            });
+            let resData = 'resource deleted...';
+      
+            return resData;
         }
     }
 })
