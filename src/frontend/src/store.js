@@ -70,12 +70,13 @@ const store = createStore({
             let data = await res.json()
             console.log("returned: " + JSON.stringify(data))
         },
-        async deleteArticle({state}) {
-            let res = await fetch(state.urls.springUrl + '/spring/api/articles/{articles.id}', {
+        async deleteArticle({state}, article) {
+            let res = await fetch(state.urls.springUrl + '/spring/api/articles/'+ article.id, {
                 method: 'DELETE',
                 headers: {
                     'Content-type': 'application/json'
-                }
+                },
+                
             });
             let resData = 'resource deleted...';
       
