@@ -3,6 +3,7 @@ from sanic_cors import CORS, cross_origin #pip install Sanic-Cors
 from nlp import sim_res_search, GetSummary
 
 
+
 app = Sanic(__name__)
 
 @app.get('/sanic/api/users')
