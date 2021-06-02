@@ -31,11 +31,17 @@ export default {
     },
     computed: {
         articles(){
-            var articlesSortedByScore = this.$store.state.searchResult.slice(0);
-            articlesSortedByScore.sort(function(a,b) {
+            let searchResult = this.$store.state.searchResult.slice(0);
+            let sortedArticles = [];
+            searchResult.sort(function(a,b) {
                 return b.score - a.score;
             });
-            return articlesSortedByScore
+            searchResult.forEach((item)=>{
+                if (item.score > 0) {
+                    sortedArticles.push(item);
+                }
+            })
+            return sortedArticles
         }
     }
 }

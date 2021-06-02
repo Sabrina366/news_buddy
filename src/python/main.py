@@ -69,10 +69,9 @@ async def post_search(req):
       score_result = sim_res_search(search, doc)
       summary_result = GetSummary(doc)
       #print(score_result)
-    for article in data_frame:
       article['score'] = score_result
       article['summary'] = summary_result
-      
+
       
     return res.json(data_frame)
 
