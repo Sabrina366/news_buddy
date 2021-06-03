@@ -1,16 +1,7 @@
 from sanic import Sanic, response as res
 from sanic_cors import CORS, cross_origin #pip install Sanic-Cors
 from nlp import readingTime, sim_res_search, GetSummary
-
-
-
 app = Sanic(__name__)
-
-
-#! readingtime function
-
-
-
 
 @app.get('/sanic/api/users')
 async def get_users(req):
