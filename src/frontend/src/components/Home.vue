@@ -5,6 +5,9 @@
             <textarea v-model="searchText" placeholder="search for content..."></textarea>
             <button>Search</button>
         </form>
+        <div v-if="loading" v-cloak>
+            <span>Searching...</span>
+        </div>
         <div class="articles">
             <div v-for="article in articles">
                 <router-link :to="'/articles/' + article.id + '/' + article.title">
@@ -27,7 +30,14 @@ export default {
             this.$store.commit('setSearch', this.searchText)
             this.$store.dispatch('sendSearch', this.searchText)
             this.$router.push('/')
+            this.loading = true;
         }
+    },
+    data() {
+        return{
+            loading: false
+        }
+
     },
     computed: {
         articles(){
@@ -41,6 +51,7 @@ export default {
                     sortedArticles.push(item);
                 }
             })
+            this.loading = false;
             return sortedArticles
         }
     }

@@ -37,7 +37,7 @@ article {
 
 h1 {
     color: #5474AA;
-    font-size: 10vh;
+    font-size: 3em;
     margin: 30px;
 }
 
