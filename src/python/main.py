@@ -76,8 +76,8 @@ async def post_search(req):
       #print(score_result)
       article['score'] = score_result
       article['summary'] = summary_result
-      article['Full-RedingTime'] = fullText
-      article['Summery-RedingTime'] = sumText
+      article['full_readingtime'] = fullText
+      article['summary_readingtime'] = sumText
       
       
     return res.json(data_frame)
