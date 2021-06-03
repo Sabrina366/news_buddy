@@ -5,6 +5,11 @@
     type="text" 
     placeholder="search..."
     v-model="input">
+    <select v-model="sorted" name="type">
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+          <option value="az">A-Z</option>
+        </select>
     <img src="src\assets\Web search-rafiki.png" alt="">
     </div>
     <div class="articles">
@@ -15,12 +20,12 @@
 
 <script>
 import ArticleItems from "../components/ArticleItems.vue";
-
 export default {
     data() {
       return{
         input: '',
-        articlesSorted: []
+        articlesSorted: [],
+        sorted: "latest"
       }
     },
     components:{
@@ -28,12 +33,19 @@ export default {
   },
   computed:{
     articles(){
-        let articlesSorted = this.$store.state.articles.filter(article =>
-        article.title.toLowerCase().includes(this.input.toLowerCase())).reverse()
+      let articlesSorted = this.$store.state.articles.filter(article =>
+        article.title.toLowerCase().includes(this.input.toLowerCase())).sort().reverse()
+      if(this.sorted == "oldest"){
+        articlesSorted = this.$store.state.articles.filter(article =>
+        article.title.toLowerCase().includes(this.input.toLowerCase()))
+      }
+      else if(this.sorted == "az"){
+        articlesSorted = this.$store.state.articles.filter(article =>
+        article.title.toLowerCase().includes(this.input.toLowerCase())).sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1)
+      }
         return articlesSorted
     }
   },
-
 }
 </script>
 
@@ -60,16 +72,12 @@ export default {
   .articles::-webkit-scrollbar {
   width: 12px;
 }
-
 .articles::-webkit-scrollbar-track {
   background: gainsboro; 
 }
-
 .articles::-webkit-scrollbar-thumb {
   background-color:rgb(179, 179, 179); 
   border-radius: 5px;   
   border: 3px solid gainsboro;  
 }
-
 </style>
-

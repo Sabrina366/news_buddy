@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '/src/components/Home.vue'
 import ArticleList from '/src/views/ArticleList.vue'
+import Article from '/src/views/Article.vue'
 
-import Article from '/src/components/Article.vue'
 const routes = [
     {
         path: '/',

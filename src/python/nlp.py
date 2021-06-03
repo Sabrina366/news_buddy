@@ -5,7 +5,8 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 
 print()
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("en_core_web_lg", disable=['ner', 'parser', 'textcat'])
+nlp.add_pipe('sentencizer')
 matcher = PhraseMatcher(nlp.vocab, attr= 'LOWER')
 
 ### raw search input getting parsed to spacy.Doc object
@@ -70,14 +71,12 @@ def sim_res_search(search_input, doc):
 
 #print(res)
 
-
 #! Redingtime section
 def readingTime(doc):
   total_words = len([ token.text for token in nlp(doc) ])
   estimated_time = total_words / 200.0
   print(estimated_time)
   return estimated_time
-
 
 #! Here we will create a list of stopwords.
 stopwords = list(STOP_WORDS)

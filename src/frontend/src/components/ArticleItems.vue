@@ -11,7 +11,9 @@
           </div>
         </teleport>
         <button @click="showConfirm = true" class="delbtn">X</button>
-        <h3>{{ article.title }}</h3>
+        <router-link :to="'/articles/' + article.id + '/' + article.title">
+            <h3>{{ article.title }}</h3>
+        </router-link>
         <p class="author">By {{ article.author }}</p>
         <p class="text">{{ article.text }}</p>
     </article>
@@ -24,7 +26,6 @@ export default {
     return{
       showConfirm: false,
     }
-
   },
     props: ['article'],
     methods: {
@@ -88,7 +89,6 @@ export default {
   border-width: 1px;
   margin-top: 10%;
   margin-right: 1.5%;
-
 }
 .cancelbtn{
   cursor: pointer;
@@ -101,5 +101,9 @@ export default {
 }
 .confirmtxt{
   margin-top: 10%;
+}
+.articles a {
+    text-decoration: none;
+    color: inherit;
 }
 </style>

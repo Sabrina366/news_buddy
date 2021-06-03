@@ -5,6 +5,9 @@
             <textarea v-model="searchText" placeholder="search for content..."></textarea>
             <button>Search</button>
         </form>
+        <div v-if="loading" v-cloak>
+            <div class="loader"></div>
+        </div>
         <div class="articles">
             <div v-for="article in articles">
                 <router-link :to="'/articles/' + article.id + '/' + article.title">
@@ -18,6 +21,7 @@
     </div>
 </template>
 
+
 <script>
 export default {
     methods:{
@@ -25,31 +29,45 @@ export default {
             this.$store.commit('setSearch', this.searchText)
             this.$store.dispatch('sendSearch', this.searchText)
             this.$router.push('/')
+            this.loading = true;
+        }
+    },
+    data() {
+        return{
+            loading: false
         }
     },
     computed: {
         articles(){
-            return this.$store.state.articles
+            let searchResult = this.$store.state.searchResult.slice(0);
+            let sortedArticles = [];
+            searchResult.sort(function(a,b) {
+                return b.score - a.score;
+            });
+            searchResult.forEach((item)=>{
+                if (item.score > 0) {
+                    sortedArticles.push(item);
+                }
+            })
+            this.loading = false;
+            return sortedArticles
         }
     }
 }
 </script>
 
 <style scoped>
-
 .homepage {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 img {
     width: 60%;
     height: 60vh;
     object-fit: cover;
     object-position: center top;
 }
-
 form {
     display: flex;
     flex-direction: column;
@@ -57,7 +75,6 @@ form {
     max-width: 800px;
     height: 200px;
 }
-
 textarea {
     height: 120px;
     border: 3px solid #5474AA;
@@ -66,7 +83,6 @@ textarea {
     resize: none;
     border-radius: 4px;
 }
-
 button {
     display: flex;
     align-self: flex-end;
@@ -78,18 +94,15 @@ button {
     margin: 5px;
     font-weight: 600;
 }
-
 .articles {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .articles a {
     text-decoration: none;
     color: inherit;
 }
-
 article {
     width: 300px;
     border: dashed 2px rgb(196, 186, 186);
@@ -97,5 +110,17 @@ article {
     padding: 10px;
     border-radius: 4px;
 }
-
+/* Loader */
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 </style>
