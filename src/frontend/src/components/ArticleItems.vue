@@ -11,7 +11,9 @@
           </div>
         </teleport>
         <button @click="showConfirm = true" class="delbtn">X</button>
-        <h3>{{ article.title }}</h3>
+        <router-link :to="'/articles/' + article.id + '/' + article.title">
+            <h3>{{ article.title }}</h3>
+        </router-link>
         <p class="author">By {{ article.author }}</p>
         <p class="text">{{ article.text }}</p>
     </article>
@@ -101,5 +103,10 @@ export default {
 }
 .confirmtxt{
   margin-top: 10%;
+}
+
+.articles a {
+    text-decoration: none;
+    color: inherit;
 }
 </style>
