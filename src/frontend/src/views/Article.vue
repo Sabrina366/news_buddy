@@ -3,7 +3,7 @@
         <article>
             <h1>{{article.title}}</h1>
             <a :href="article.url" target="_blank">{{article.url}}</a>
-            <p class="info">by: {{article.author}} | published: {{article.published_date}} | added: {{article.timestamp}}</p>
+            <p class="info">by: {{article.author}} | published: {{article.pub_date}} | added: {{article.timestamp}}</p>
             <p class="text">{{article.text}}</p>
         </article>
     </div>
