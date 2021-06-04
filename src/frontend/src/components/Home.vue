@@ -13,6 +13,10 @@
                 <router-link :to="'/articles/' + article.id + '/' + article.title">
                     <article>
                         <h2>{{article.title}}</h2>
+                        <div class="info">
+                            <p>Full reading time: {{showTime(article.full_readingtime)}} min</p>
+                            <p>Summary reading time: {{showTime(article.summary_readingtime)}} min</p>
+                        </div>
                         <p>{{article.summary}}</p>
                     </article>
                 </router-link>
@@ -31,6 +35,11 @@ export default {
             this.$store.dispatch('sendSearch', this.searchText)
             this.$router.push('/')
             this.loading = true;
+        },
+        showTime(time){
+            let timeRounded = Math.ceil(time)
+            if(time < 1) timeRounded = "<" + timeRounded
+            return timeRounded
         }
     },
     data() {
@@ -119,6 +128,16 @@ article {
     margin: 40px;
     padding: 10px;
     border-radius: 4px;
+}
+
+.info {
+    color: #5474AA;
+}
+
+.info p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
 }
 
 /* Loader */
