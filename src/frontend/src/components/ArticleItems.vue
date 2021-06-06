@@ -4,7 +4,7 @@
         <teleport to="#confirm">
           <div class="confirmDelete" v-if="showConfirm">
             <p class="confirmtxt">
-              Delete Article Permanently?
+              Delete Article?
             </p>
             <button @click="delArticle" class="deletebtn">Delete</button>
             <button @click="showConfirm = false" class="cancelbtn">Cancel</button>
