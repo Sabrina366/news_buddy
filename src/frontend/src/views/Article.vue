@@ -3,7 +3,7 @@
         <article>
             <h1>{{article.title}}</h1>
             <a :href="article.url" target="_blank">{{article.url}}</a>
-            <p class="info">by: {{article.author}} | published: {{article.pub_date}} | added: {{article.timestamp}}</p>
+            <p class="info">by: {{article.author}} | published: {{article.pub_date}} | added: {{dateConvert(article.timestamp)}}</p>
             <p class="text">{{article.text}}</p>
         </article>
     </div>
@@ -14,13 +14,32 @@ export default {
 
     computed: {
         article(){
-            for(let i=0; i<=this.$store.state.articles.length; i++) {
+            for(let i=0; i<=this.$store.state.articles.length; i++) {               
                 if(this.$store.state.articles[i].id == this.$route.params.id) {
+                    
                     return this.$store.state.articles[i]
                 }
+                
+                
             }
+            
+            
+        }
+               
+
+    },
+    methods: {
+        dateConvert(unix) {
+            
+            let date = new Date(unix * 1000).toLocaleString()
+                
+            return date
+
+            
         }
     }
+    
+    
 }
 </script>
 
