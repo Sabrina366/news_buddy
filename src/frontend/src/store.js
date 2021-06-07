@@ -10,6 +10,14 @@ const store = createStore({
         search: {
             searchText: ""
         },
+        article: {
+            title: "",
+            author: "" ,
+            pub_date: "",
+            url: "",
+            text: "",
+            timestamp: "",
+        },
         searchResult: [],
         articles: []
     },
@@ -22,7 +30,10 @@ const store = createStore({
         },
         removeArticle(state, articleToRemove){
             state.articles = state.articles.filter(article => article != articleToRemove)
-          },
+        },
+        setArticle(state, article) {
+            state.article = article
+        }
        
     },
     actions:{
@@ -51,6 +62,15 @@ const store = createStore({
             let resData = 'resource deleted...';
       
             return resData;
+        },
+        async addArticle({state}) {
+            let res = await fetch(state.urls.springUrl + '/spring/api/articles', {
+                method: 'post',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(state.article)
+            })
+            let data = await res.json()
+            state.article = data
         }
     }
 })
