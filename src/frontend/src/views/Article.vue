@@ -18,28 +18,17 @@ export default {
                 if(this.$store.state.articles[i].id == this.$route.params.id) {
                     
                     return this.$store.state.articles[i]
-                }
-                
-                
-            }
-            
-            
-        }
-               
-
+                }                                
+            }                        
+        }               
     },
     methods: {
-        dateConvert(unix) {
-            
-            let date = new Date(unix * 1000).toLocaleString()
+        dateConvert(unix) {            
+            let date = new Date(unix * 1000).toLocaleDateString()
                 
-            return date
-
-            
+            return date            
         }
-    }
-    
-    
+    }        
 }
 </script>
 
