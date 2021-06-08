@@ -13,7 +13,7 @@
         </div>
         
         <div class="submit">
-            <button type="submit" id="submitButton">Submit</button>
+            <button type="submit"  id="submitButton">Submit</button>
     
         </div>
         
@@ -56,11 +56,17 @@ export default {
             }
             this.$store.commit('setArticle', article)
             this.$store.dispatch('addArticle', article)
-        
+            this.$router.push('/add')
             console.log("form submitted: ", this.$store.state.article)
 
-        },
 
+            this.title = ""
+            this.author = ""
+            this.pub_date = ""
+            this.text = ""
+            this.url = ""
+        },
+        
         
 
     
