@@ -49,10 +49,10 @@ def sim_res_search(search_input, doc):
         matches = matcher(doc)
         
         ### for loop for prints only
-        for match_id, start, end in matches:
-            span = doc[start:end]
-            string_id = nlp.vocab.strings[match_id]       
-            d.append((string_id, span.text))        
+        #for match_id, start, end in matches:
+        #    span = doc[start:end]
+        #    string_id = nlp.vocab.strings[match_id]       
+        #    d.append((string_id, span.text))        
         # If there is a match in words from the search the object will be given a score from 0-1 if not the score will remain at 0.0
         if matches:
             sim_result = search_string.similarity(doc)
