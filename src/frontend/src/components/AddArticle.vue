@@ -11,7 +11,7 @@
         <textarea type="text" placeholder="Article" required v-model="text"></textarea> 
         <div><input type="text" placeholder="Link to article" v-model="url">
         </div>
-        
+        <div id="Succes" v-if="ifSucces"><p>Succes!</p></div>
         <div class="submit">
             <button type="submit"  id="submitButton">Submit</button>
     
@@ -30,7 +30,7 @@
 export default { 
     data(){
         return {
-            
+            ifSucces: false,
             title: "",
             author: "",
             pub_date: "",
@@ -58,13 +58,14 @@ export default {
             this.$store.dispatch('addArticle', article)
             this.$router.push('/add')
             console.log("form submitted: ", this.$store.state.article)
-
+            this.ifSucces = true
 
             this.title = ""
             this.author = ""
             this.pub_date = ""
             this.text = ""
             this.url = ""
+            
         },
         
         
@@ -78,6 +79,10 @@ export default {
 
 <style scoped>
 
+
+#Succes {
+    color:green
+}
 
 .addArticle {
     display: flex;
