@@ -6,7 +6,7 @@
     <router-link to="/"><img class="icon-small" src="src/assets/NewsBuddy-IconSmall.png" alt="IconSmall"></router-link>
   </div>
    <div class="link1">
-     <router-link to="/">Add Article</router-link>
+     <router-link to="/addArticle">Add Article</router-link>
    </div>
     <div class="link2">
       <router-link to="/articles">Articles</router-link>

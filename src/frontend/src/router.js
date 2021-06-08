@@ -22,7 +22,6 @@ const routes = [
         component: ArticleList,
     },
     {
-
     path: '/addArticle',
     name: 'addArticle',
     component: addArticle,
