@@ -11,14 +11,12 @@
 
 <script>
 export default {
-
+    created() {
+        this.$store.dispatch('getArticle', this.$route.params.id)
+    },
     computed: {
         article(){
-            for(let i=0; i<=this.$store.state.articles.length; i++) {
-                if(this.$store.state.articles[i].id == this.$route.params.id) {
-                    return this.$store.state.articles[i]
-                }
-            }
+            return this.$store.state.article
         }
     }
 }

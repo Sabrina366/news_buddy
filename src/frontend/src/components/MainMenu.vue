@@ -2,8 +2,8 @@
 
  <nav class="navbar">
     <div class="logo">
-    <router-link to="/"><img class="icon" src="src/assets/NewsBuddy-logo.png" alt="Icon"></router-link>
-    <router-link to="/"><img class="icon-small" src="src/assets/NewsBuddy-IconSmall.png" alt="IconSmall"></router-link>
+    <router-link to="/"><img class="icon" src="/src/assets/NewsBuddy-logo.png" alt="Icon"></router-link>
+    <router-link to="/"><img class="icon-small" src="/src/assets/NewsBuddy-IconSmall.png" alt="IconSmall"></router-link>
   </div>
    <div class="link1">
      <router-link to="/">Add Article</router-link>

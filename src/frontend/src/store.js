@@ -11,11 +11,15 @@ const store = createStore({
             searchText: ""
         },
         searchResult: [],
-        articles: []
+        articles: [],
+        article: {}
     },
     mutations:{
         setArticles(state, articles) {
             state.articles = articles
+        },
+        setArticle(state, article) {
+            state.article = article
         },
         setSearch(state, searchTextToAppend) {
             state.search.searchText = searchTextToAppend
@@ -30,6 +34,12 @@ const store = createStore({
             let res = await fetch(state.urls.springUrl + '/spring/api/articles')
             let data = await res.json()
             commit('setArticles', data)
+        },
+        async getArticle({ commit, state }, id) {
+            let res = await fetch(state.urls.springUrl + '/spring/api/articles/'+ id)
+            let data = await res.json()
+            commit('setArticle', data)
+
         },
         async sendSearch({state}) {
             let res = await fetch(state.urls.sanicUrl + '/sanic/api/search', {
