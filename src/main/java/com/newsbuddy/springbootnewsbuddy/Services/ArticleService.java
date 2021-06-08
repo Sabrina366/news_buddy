@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArticleService {
@@ -19,6 +20,10 @@ public class ArticleService {
 
     public List<Article> getAllArticles() {
         return (List<Article>) articleRepository.findAll();
+    }
+
+    public Optional<Article> getArticleById(int id){
+        return articleRepository.findById(id);
     }
 
 
@@ -43,6 +48,7 @@ public class ArticleService {
     public void deleteFromSanic(int id){
         restTemplate.delete(url + id);
     }
+
 
 
 }

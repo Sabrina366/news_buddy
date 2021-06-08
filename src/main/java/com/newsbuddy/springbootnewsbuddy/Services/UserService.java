@@ -1,5 +1,6 @@
 package com.newsbuddy.springbootnewsbuddy.Services;
 
+import com.newsbuddy.springbootnewsbuddy.Configs.MyUserDetailsService;
 import com.newsbuddy.springbootnewsbuddy.Entities.User;
 import com.newsbuddy.springbootnewsbuddy.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,18 @@ import java.util.List;
 @Service
 public class UserService {
 
+    @Autowired
+    MyUserDetailsService myUserDetailsService;
 
     @Autowired
     UserRepository userRepository;
     String url = "http://127.0.0.1:8000/sanic/api/users/";
     RestTemplate restTemplate = new RestTemplate();
+
+    public User register(User user) {
+        return myUserDetailsService.addUser(user);
+    }
+
 
     public List<User> getAllUsers(){
         return (List<User>) userRepository.findAll();

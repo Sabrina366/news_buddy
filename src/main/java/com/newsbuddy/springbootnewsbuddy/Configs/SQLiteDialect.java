@@ -142,4 +142,3 @@ public class SQLiteDialect extends Dialect {
         return false;
     }
 }
-
