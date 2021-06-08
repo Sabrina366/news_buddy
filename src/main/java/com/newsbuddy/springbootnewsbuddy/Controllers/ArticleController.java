@@ -13,6 +13,11 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
+    @GetMapping("/spring/api/articles/{id}")
+    public Article getArticleById(@PathVariable int id){
+        return articleService.getArticleById(id);
+    }
+
     @GetMapping("/spring/api/articles")
     public List<Article> getArticles(){
         return articleService.getAllArticles();

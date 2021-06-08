@@ -17,6 +17,10 @@ public class ArticleService {
     String url = "http://127.0.0.1:8000/sanic/api/articles/";
     RestTemplate restTemplate = new RestTemplate();
 
+    public Article getArticleById(int id){
+        return articleRepository.findById(id);
+    }
+
     public List<Article> getAllArticles() {
         return (List<Article>) articleRepository.findAll();
     }
