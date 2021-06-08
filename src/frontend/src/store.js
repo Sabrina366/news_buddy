@@ -27,7 +27,7 @@ const store = createStore({
     },
     actions:{
         async getArticles({ commit, state }) {
-            let res = await fetch(state.urls.springUrl + '/spring/api/articles')
+            let res = await fetch(state.urls.springUrl + '/rest/spring/api/articles')
             let data = await res.json()
             commit('setArticles', data)
         },
@@ -41,7 +41,7 @@ const store = createStore({
             state.searchResult = data
         },
         async deleteArticle({state}, article) {
-            let res = await fetch(state.urls.springUrl + '/spring/api/articles/'+ article.id, {
+            let res = await fetch(state.urls.springUrl + '/rest/spring/api/articles/'+ article.id, {
                 method: 'DELETE',
                 headers: {
                     'Content-type': 'application/json'

@@ -23,13 +23,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers("/rest/spring/api/articles").authenticated()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/api/**").authenticated()
                 .and()
                 .formLogin()
-        //.loginPage("/login")
+                //.loginPage("/login")
+                .and()
+                .logout()
         ;
     }
+
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

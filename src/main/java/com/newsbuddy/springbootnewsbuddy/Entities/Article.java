@@ -18,7 +18,7 @@ public class Article {
     private String pub_date;
     private String url;
     private String text;
-    private String timestamp;
+    private int timestamp;
     @Transient
     String summary;
     @Transient
@@ -28,7 +28,7 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String author, String pub_date, String url, String text, String timestamp) {
+    public Article(String title, String author, String pub_date, String url, String text, int timestamp) {
         this.title = title;
         this.author = author;
         this.pub_date = pub_date;
@@ -37,7 +37,7 @@ public class Article {
         this.timestamp = timestamp;
     }
 
-    public Article(int id, String title, String author, String pub_date, String url, String text, String timestamp, String summary, float score) {
+    public Article(int id, String title, String author, String pub_date, String url, String text, int timestamp, String summary, float score) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -113,11 +113,11 @@ public class Article {
         this.text = text;
     }
 
-    public String getTimestamp() {
+    public int getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(int timestamp) {
         this.timestamp = timestamp;
     }
 

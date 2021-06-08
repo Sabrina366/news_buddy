@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ArticleController {
@@ -13,17 +14,22 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
-    @GetMapping("/spring/api/articles")
-    public List<Article> getArticles(){
+    @GetMapping("/spring/api/articles/{id}")
+    public Optional<Article> getArticleById(@PathVariable int id){
+        return articleService.getArticleById(id);
+    }
+
+    @GetMapping("/rest/spring/api/articles")
+    public List<Article> getAllArticles() {
         return articleService.getAllArticles();
     }
 
-    @PostMapping("/spring/api/articles")
+    @PostMapping("/rest/spring/api/articles")
     public Article addNewArticle(@RequestBody Article article){
         return articleService.addArticle(article);
     }
 
-    @DeleteMapping("/spring/api/articles/{id}")
+    @DeleteMapping("/rest/spring/api/articles/{id}")
     public void deleteById(@PathVariable int id){
         articleService.deleteById(id);
     }

@@ -13,6 +13,12 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
+    @PostMapping("/api/register")
+    public User register(@RequestBody User user){
+        return userService.register(user);
+    }
+
     @GetMapping("/spring/api/users")
     public List<User> getUsers(){
         return userService.getAllUsers();

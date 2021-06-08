@@ -18,18 +18,18 @@ public class MyUserDetailsService implements UserDetailsService {
     public BCryptPasswordEncoder getEncoder() { return encoder; }
 
     @Autowired
-    private UserRepository userRepo;
+    private UserRepository userRepository;
 
     @PostConstruct
     private void createDefaultUsers(){
-        if (userRepo.findByUsername("hassan") == null) {
-            addUser(new User("hassan", "hej123"));
+        if (userRepository.findByUsername("thor") == null) {
+            addUser(new User("thor", "hej123"));
         }
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
+        User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found by name: " + username);
         }
@@ -40,7 +40,7 @@ public class MyUserDetailsService implements UserDetailsService {
         //User user = new User(username, encoder.encode(password));
         user.setPassword(encoder.encode(user.getPassword()));
         try {
-            return userRepo.save(user);
+            return userRepository.save(user);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
