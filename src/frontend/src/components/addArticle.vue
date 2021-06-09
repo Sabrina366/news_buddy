@@ -1,6 +1,6 @@
 <template>
     <div class="addArticle">
-    <img alt="readingNews" src="../assets/News-bro.png"  >
+    <img alt="readingNews" src="../assets/Taking_notes-rafiki.png"  >
  
     <form  @submit.prevent="handlesubmit">
         
