@@ -4,31 +4,28 @@ from collections import Counter
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 
-print()
+
 nlp = spacy.load("en_core_web_lg", disable=['ner', 'parser', 'textcat'])
 nlp.add_pipe('sentencizer')
 matcher = PhraseMatcher(nlp.vocab, attr= 'LOWER')
 
-### raw search input getting parsed to spacy.Doc object
-
-
-
+###! raw search input getting parsed to spacy.Doc object
 
 def sim_res_search(search_input, doc):
-### list to store the search words from user and be able to match the texts from the DB.
+###! list to store the search words from user and be able to match the texts from the DB.
     terms = []
     
-### Lemmatization of the search input , added to tweek the matching slightly further.
+###! Lemmatization of the search input , added to tweek the matching slightly further.
 
     lem_doc = nlp(search_input)
     for token in lem_doc:
         lem_string = token.lemma_
         search_input = search_input + ' ' + lem_string
 
-    #print(search_input + '\n')
+    
     search_string = nlp(search_input)
         
-### cleans the search from stop words and punctuation and adds to terms list for matching processing of texts.
+###! cleans the search from stop words and punctuation and adds to terms list for matching processing of texts.
     search_string_cleaned = [token for token in search_string if not token.is_stop and not token.is_punct]    
 
     for token in search_string_cleaned:
@@ -36,40 +33,28 @@ def sim_res_search(search_input, doc):
     
     patterns = [nlp.make_doc(text) for text in terms]
     matcher.add("TerminologyList", patterns)
-### take in texts as a list..    
+###! take in texts as a list..    
     text_list = [] 
     text_list.append(doc)
-### list containing the counter values of the words matched only for debugging/testing
-    d = []
+###! list containing the counter values of the words matched only for debugging/testing
+    
     sim_result = 0.0
-    #text_matches = []
-    ### looping trough the texts to look for matches using the phrasematcher instanced with the variable matcher.
+    ###! looping trough the texts to look for matches using the phrasematcher instanced with the variable matcher.
     for texts in text_list:
         doc = nlp(texts)
         matches = matcher(doc)
         
-        ### for loop for prints only
-        #for match_id, start, end in matches:
-        #    span = doc[start:end]
-        #    string_id = nlp.vocab.strings[match_id]       
-        #    d.append((string_id, span.text))        
-        # If there is a match in words from the search the object will be given a score from 0-1 if not the score will remain at 0.0
+        
+        #! If there is a match in words from the search the object will be given a score from 0-1 if not the score will remain at 0.0
         if matches:
             sim_result = search_string.similarity(doc)
-            print(sim_result)
-            # .........Prints For Testing..........
-            # text_matches.append((sim_result, doc))
-            #print("SimResult: {} \nMatch ID: {}\nString ID: {}\nStart: {}\nEnd: {}\nText: {}\nSentence: {}\nFull Text: {} ".format(
-            #sim_result, match_id, string_id, start, end, span.text, span.sent, doc))
-            #print("\n".join(f'{i[0]} {i[1]} ({j})' for i,j in Counter(d).items()))             
+            #print(sim_result)
+                        
         
-    #for every_match in text_matches:
-    #    print(every_match)                       
+                         
     return sim_result
 
-#res = sim_res_search(search_input, doc)
 
-#print(res)
 
 #! Redingtime section
 def readingTime(doc):

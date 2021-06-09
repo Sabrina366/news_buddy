@@ -63,7 +63,7 @@ async def delete_article_by_id(req, article_id):
 async def post_search(req):
     from python.database import get_articles
     search = req.json
-    print(search)
+    
   
     data_frame = await get_articles()
   
@@ -74,7 +74,7 @@ async def post_search(req):
         summary_result = GetSummary(doc)
         fullText = readingTime(doc)
         sumText = readingTime(summary_result)
-      #print(score_result)
+      
         article['score'] = score_result
         article['summary'] = summary_result
         article['full_readingtime'] = fullText
@@ -83,21 +83,6 @@ async def post_search(req):
       
     return res.json(data_frame)
 
-""" @app.get('/sanic/api/articles/result')
-async def post_proccesed(req):
-  from database import get_articles
-  
-  data_frame = await get_articles()
-  
-  for article in data_frame:
-    doc = article['text']
-    score_result = sim_res_search(, doc)
-    summary_result = GetSummary(doc)
-  for article in data_frame:
-    article['score'] = score_result
-    article['summary'] = summary_result
-  
-  return res.json(data_frame) """
 
 if __name__ == "__main__":
   app.run(port=8000)
