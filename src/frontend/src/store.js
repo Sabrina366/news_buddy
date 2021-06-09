@@ -20,7 +20,7 @@ const store = createStore({
         },
         searchResult: [],
         articles: [],
-        article: {}
+
     },
     mutations:{
         setArticles(state, articles) {
@@ -34,9 +34,6 @@ const store = createStore({
         },
         removeArticle(state, articleToRemove){
             state.articles = state.articles.filter(article => article != articleToRemove)
-        },
-        setArticle(state, article) {
-            state.article = article
         }
        
     },
