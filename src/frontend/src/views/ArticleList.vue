@@ -35,14 +35,12 @@ export default {
   computed:{
     articles(){
       let articlesSorted = this.$store.state.articles.filter(article =>
-        article.title.toLowerCase().includes(this.input.toLowerCase())).sort().reverse()
-      if(this.sorted == "oldest"){
-        articlesSorted = this.$store.state.articles.filter(article =>
         article.title.toLowerCase().includes(this.input.toLowerCase()))
+      if(this.sorted == "latest"){
+        articlesSorted = articlesSorted.reverse()
       }
       else if(this.sorted == "az"){
-        articlesSorted = this.$store.state.articles.filter(article =>
-        article.title.toLowerCase().includes(this.input.toLowerCase())).sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1)
+        articlesSorted = articlesSorted.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1)
       }
         return articlesSorted
     }
