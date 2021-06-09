@@ -69,9 +69,9 @@ const store = createStore({
                 },
                 
             });
-            let resData = 'resource deleted...';
-      
-            return resData;
+            if(res.ok){
+                this.commit('removeArticle', article)
+            }
         },
         async addArticle({state}) {
             let res = await fetch(state.urls.springUrl + '/spring/api/articles', {
