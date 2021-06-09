@@ -11,7 +11,7 @@
           </div>
         </teleport>
         <button @click="showConfirm = true" class="delbtn">X</button>
-        <router-link :to="'/articles/' + article.title + '/' + article.id ">
+        <router-link :to="'/articles/' + article.id ">
             <h3>{{ article.title }}</h3>
         </router-link>
         <p class="author">By {{ article.author }}</p>

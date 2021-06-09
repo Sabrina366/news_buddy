@@ -10,7 +10,7 @@
         </div>
         <div class="articles">
             <div v-for="article in articles">
-                <router-link :to="'/articles/' + article.title+ '/'   + article.id">
+                <router-link :to="'/articles/' + article.id">
                     <article>
                         <h2>{{article.title}}</h2>
                         <div class="info">
